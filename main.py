@@ -1,4 +1,6 @@
 from pyfiglet import figlet_format
+import json
+import pandas as pd
 print(figlet_format("ZEIN" , font= "standard"))
 
 member = input("Are you a member of Zein? (y/n): ")
@@ -6,8 +8,20 @@ while member != "y" and member != "n":
     print("Enter y or n!")
     member = input("Are you a member of Zein? (y/n): ")
 if member ==    "y":
-    print("Welcome to our website!")
-    
+    user_name = input("Please enter your user name: ")
+    with open("members.json") as f:
+        store_data = json.load(f)
+        for member in store_data:
+            if user_name != member['name']:
+                print("You are not in our member list!")
+                break
+            if user_name == member['name']:
+                password = input("Please enter your password: ")
+                if password == member['password']:
+                    print("Welcome to our website!", member['name'])
+                else:
+                    print("Wrong password! You are not out member!")
+
 else:
     print("For our new member, you can get 5 percent discount on your first purchase!") 
     confirmation = input("Are you interested? (y/n):")
@@ -16,15 +30,23 @@ else:
         confirmation = input("Are you still interested? (y/n): ")
     if confirmation == "y":
         print("please fill up some information about yourself.")
+        new_user = input("Write Your preferred username:")
+        new_pass = input("Create your password: ")
+        with open("members.json") as f:
+            store_data = json.load(f)
+            new_dict = {"name" : new_user, "password" : new_pass}
+            store_data.append(new_dict)
+        with open("members.json", "w") as f:
+            json.dump(store_data, f)
+        print("Welcome to our website!", new_dict['name'])    
     else:
-        print("It's okay! Let's get started!")    
+        print("It's okay! Let's get started!")  
    
 
 # Catagories started
 cart = []
 def available_products(p):  
-    import json
-    import pandas as pd
+    
     with open(p) as f:
         data = json.load(f)  
     for i in range (len(data)):
