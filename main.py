@@ -1,4 +1,5 @@
-print("ZEIN")
+from pyfiglet import figlet_format
+print(figlet_format("ZEIN" , font= "standard"))
 
 member = input("Are you a member of Zein? (y/n): ")
 while member != "y" and member != "n":
@@ -35,7 +36,7 @@ def available_products(p):
                 if n.lower() == value['Name'].lower():
                     return value['Price']
         if choice != None and choice != "no":
-            print("price is almost: $", mix(choice))            
+            print("The product price is: $", mix(choice))            
         if choice == 'no':
             option = input("Do you want to check other catagories? (y/n): ")
             if option == 'y':
@@ -80,7 +81,7 @@ def edit_cart():
     proceed = input("Do you want to proceed for checkout (y/n)?:  ")
     if proceed == "y":
         print("payment")
-        print(f"Your collections are: {cart}")  
+         
 
     else:
         print("Edit your cart")
@@ -90,7 +91,8 @@ def edit_cart():
             edit_cart()
         elif modify == "delete":
             delete_cart()
-edit_cart()            
+edit_cart()    
+print(f"Your Final collections are: {cart}")         
 
 # def payment():
 
