@@ -21,8 +21,32 @@ else:
 
 # Catagories started
 cart = []
-available_bags = { "1. Gucci Attache large shoulder bag" : "$6250" , "2. Mini top handle bag with Double G" : "$4465" }
-available_cloths = { "1. Gucci GG Reversible Jacket" : "$2917" , "2. Gucci Belted Knitted Vest " : "$1285"}
+def available_products(p):
+    
+    
+    import json
+    import pandas as pd
+    with open(p) as f:
+        data = json.load(f)  
+    for i in range (len(data)):
+        
+        print(pd.DataFrame(data))
+        
+        choice = input("Please write the full name or 'no' to stop ")
+        def mix(n):
+            for value in data:
+                if n.lower() == value['Name'].lower():
+                    return value['Price']
+        if choice != None and choice != "no":
+            print("price is almost: $", mix(choice))            
+        if choice == 'no':
+            option = input("Do you want to check other catagories? (y/n): ")
+            if option == 'y':
+                main()
+            else:    
+                break
+            break    
+        cart.append(choice.upper())  
 available_shoes = { "1. Men's Ace embroidered sneaker" : "$1080" , "2. Gucci Off-White Rhyton Sneakers" : "$1596" }
 def cart_all(x):
     for i in range(len(x)):
@@ -45,9 +69,9 @@ def main():
     catagory = input("Please enter the number of your desired Catagory. (1/2/3)")
     match catagory:
         case "1":
-            cart_all(available_bags)   
+            available_products("bags.json") 
         case "2":
-            cart_all(available_cloths) 
+            available_products("cloths.json") 
         case "3":
             cart_all(available_shoes)             
         case _:
@@ -84,6 +108,9 @@ def edit_cart():
         elif modify == "delete":
             delete_cart()
 edit_cart()            
+
+# def payment():
+
 
 
 
