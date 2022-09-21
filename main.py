@@ -21,15 +21,12 @@ else:
 
 # Catagories started
 cart = []
-def available_products(p):
-    
-    
+def available_products(p):  
     import json
     import pandas as pd
     with open(p) as f:
         data = json.load(f)  
     for i in range (len(data)):
-        
         print(pd.DataFrame(data))
         
         choice = input("Please write the full name or 'no' to stop ")
@@ -47,22 +44,8 @@ def available_products(p):
                 break
             break    
         cart.append(choice.upper())  
-available_shoes = { "1. Men's Ace embroidered sneaker" : "$1080" , "2. Gucci Off-White Rhyton Sneakers" : "$1596" }
-def cart_all(x):
-    for i in range(len(x)):
-        for key, value in x.items():
-            print(key ,' : ', value)
-        choice = input("Please write the full name or 'no' to stop ")
-        if choice == 'no':
-            option = input("Do you want to check other catagories? (y/n): ")
-            if option == 'y':
-                main()
-            else:    
-                break
-            break    
-        cart.append(choice.upper())
-    
-\
+
+
 
 def main():
     print("There are mainly 3 catagories of products.\n 1. Bags \n 2. Cloths \n 3. Shoes")
@@ -73,7 +56,7 @@ def main():
         case "2":
             available_products("cloths.json") 
         case "3":
-            cart_all(available_shoes)             
+            available_products("shoes.json")              
         case _:
             print("default") 
              
