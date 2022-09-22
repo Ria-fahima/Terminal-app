@@ -1,6 +1,7 @@
 from pyfiglet import figlet_format
 import json
 import pandas as pd
+import random as r
 Total = 0
 print(figlet_format("ZEIN" , font= "standard"))
 
@@ -18,8 +19,10 @@ if member ==    "y":
                 password = input("Please enter your password: ")
                 if password == member['password']:
                     print("Welcome to our website!", member['name'])
+                    new_member = "no"
                 else:
-                    print("Wrong password! You are not out member!")       
+                    print("Wrong password! You are not out member!") 
+                    new_member = "no"      
 
 else:
     print("For our new member, you can get 5 percent discount on your first purchase!") 
@@ -42,6 +45,7 @@ else:
 
     else:
         print("It's okay! Let's get started!")  
+        new_member = "no"
    
 
 # Catagories started
@@ -108,7 +112,21 @@ def payment(m,z):
                 if cart[o].lower() == l['Name'].lower():
                     z += l['Price']   
         return z  
-                               
+        
+def game():
+    
+    print("let's play a coupon game!")
+    secret_num = r.randint(1,20)
+    
+    user_guess = int(input("Guess a number between 1 to 20: "))
+    if user_guess == secret_num:
+        print("Congratulations! You got 10 percent discount")
+        game = "yes"
+           
+    else:   
+        print("Better luck next time! :) ")  
+        game = 0       
+    return game                           
 def edit_cart():
 
     proceed = input("Do you want to proceed for checkout (y/n)?:  ")
@@ -117,8 +135,12 @@ def edit_cart():
         cloth_sum =payment("cloths.json",Total)
         shoes_sum = payment("shoes.json",Total) 
         total = bag_sum +cloth_sum + shoes_sum
+        print("Original price: $", total)
         if new_member == "yes":
             total = total - (total * 0.05)
+        game_winner = game()
+        if game_winner == "yes":
+            total = total - (total * 0.1)  
         print(f"Your Final collections are: {cart}") 
         print("Your total amount is: $", total)
 
@@ -130,7 +152,10 @@ def edit_cart():
             edit_cart()
         elif modify == "delete":
             delete_cart()
-edit_cart()    
+edit_cart()
+
+
+
 
        
 
