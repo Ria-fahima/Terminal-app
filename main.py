@@ -31,6 +31,7 @@ else:
         print("please fill up some information about yourself.")
         new_user = input("Write Your preferred username:")
         new_pass = input("Create your password: ")
+        new_member = 'yes'
         with open("members.json") as f:
             store_data = json.load(f)
             new_dict = {"name" : new_user, "password" : new_pass}
@@ -52,7 +53,7 @@ def available_products(p):
     for i in range (len(data)):
         print(pd.DataFrame(data))
         
-        choice = input("Please write the full name or 'no' to stop ")
+        choice = input("Please write the full name or 'no' to exit the catagory ")
         def mix(n):
             for value in data:
                 if n.lower() == value['Name'].lower():
@@ -105,7 +106,6 @@ def payment(m,z):
         for o in range (len(cart)):
             for l in pay_data:
                 if cart[o].lower() == l['Name'].lower():
-                    print ("Product price is :", l['Price'])
                     z += l['Price']   
         return z  
                                
@@ -113,11 +113,12 @@ def edit_cart():
 
     proceed = input("Do you want to proceed for checkout (y/n)?:  ")
     if proceed == "y":
-        print("payment")
         bag_sum = payment("bags.json",Total)
         cloth_sum =payment("cloths.json",Total)
         shoes_sum = payment("shoes.json",Total) 
         total = bag_sum +cloth_sum + shoes_sum
+        if new_member == "yes":
+            total = total - (total * 0.05)
         print(f"Your Final collections are: {cart}") 
         print("Your total amount is: $", total)
 
