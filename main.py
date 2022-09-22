@@ -1,6 +1,7 @@
 from pyfiglet import figlet_format
 import json
 import pandas as pd
+Total = 0
 print(figlet_format("ZEIN" , font= "standard"))
 
 member = input("Are you a member of Zein? (y/n): ")
@@ -12,15 +13,13 @@ if member ==    "y":
     with open("members.json") as f:
         store_data = json.load(f)
         for member in store_data:
-            if user_name != member['name']:
-                print("You are not in our member list!")
-                break
+            
             if user_name == member['name']:
                 password = input("Please enter your password: ")
                 if password == member['password']:
                     print("Welcome to our website!", member['name'])
                 else:
-                    print("Wrong password! You are not out member!")
+                    print("Wrong password! You are not out member!")       
 
 else:
     print("For our new member, you can get 5 percent discount on your first purchase!") 
@@ -38,7 +37,8 @@ else:
             store_data.append(new_dict)
         with open("members.json", "w") as f:
             json.dump(store_data, f)
-        print("Welcome to our website!", new_dict['name'])    
+        print("Welcome to our website!", new_dict['name'])  
+
     else:
         print("It's okay! Let's get started!")  
    
@@ -97,13 +97,29 @@ def delete_cart():
     else:
         edit_cart()
 
-
+def payment(m,z):
+    
+    with open(m) as f:
+        pay_data = json.load(f)
+        z = 0
+        for o in range (len(cart)):
+            for l in pay_data:
+                if cart[o].lower() == l['Name'].lower():
+                    print ("Product price is :", l['Price'])
+                    z += l['Price']   
+        return z  
+                               
 def edit_cart():
 
     proceed = input("Do you want to proceed for checkout (y/n)?:  ")
     if proceed == "y":
         print("payment")
-         
+        bag_sum = payment("bags.json",Total)
+        cloth_sum =payment("cloths.json",Total)
+        shoes_sum = payment("shoes.json",Total) 
+        total = bag_sum +cloth_sum + shoes_sum
+        print(f"Your Final collections are: {cart}") 
+        print("Your total amount is: $", total)
 
     else:
         print("Edit your cart")
@@ -114,9 +130,12 @@ def edit_cart():
         elif modify == "delete":
             delete_cart()
 edit_cart()    
-print(f"Your Final collections are: {cart}")         
 
-# def payment():
+       
+
+
+
+
 
 
 
