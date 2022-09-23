@@ -57,13 +57,17 @@ def available_products(p):
     for i in range (len(data)):
         print(pd.DataFrame(data))
         
-        choice = input("Please write the full name or 'no' to exit the catagory ")
+        choice = input("Please write the full name or 'no' to exit the catagory ").strip()
         def mix(n):
             for value in data:
+                
                 if n.lower() == value['Name'].lower():
+                    cart.append(choice.upper())  
                     return value['Price']
+                      
         if choice != None and choice != "no":
-            print("The product price is: $", mix(choice))            
+            print("The product price is: $", mix(choice))    
+               
         if choice == 'no':
             option = input("Do you want to check other catagories? (y/n): ")
             if option == 'y':
@@ -71,7 +75,7 @@ def available_products(p):
             else:    
                 break
             break    
-        cart.append(choice.upper())  
+         
 class RangeError(Exception):
     pass
 def category():
