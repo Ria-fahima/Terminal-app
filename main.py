@@ -69,13 +69,18 @@ def available_products(p):
             print("The product price is: $", mix(choice))    
                
         if choice == 'no':
-            option = input("Do you want to check other catagories? (y/n): ")
-            if option == 'y':
-                main()
-            else:    
-                break
+            options()
             break    
-         
+def options():
+    option = input("Do you want to check other catagories? (y/n): ")
+    if option == 'y':
+        main()
+    elif option == 'n':
+        pass   
+    else:    
+        print("Enter y or n!")
+        return options()
+
 class RangeError(Exception):
     pass
 def category():
