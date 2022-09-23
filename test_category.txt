@@ -1,0 +1,8 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.10.5, pytest-7.1.3, pluggy-1.0.0
+rootdir: /Users/ealam/terminal-app
+collected 2 items
+
+test_category.py ..                                                      [100%]
+
+============================== 2 passed in 0.54s ===============================
