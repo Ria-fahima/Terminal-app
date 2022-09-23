@@ -4,51 +4,52 @@ import pandas as pd
 import random as r
 Total = 0
 print(figlet_format("ZEIN" , font= "standard"))
-
-member = input("Are you a member of Zein? (y/n): ").strip()
-  
-while member != "y" and member != "n":
-    print("Enter y or n!")
+def check_member():
     member = input("Are you a member of Zein? (y/n): ").strip()
-if member ==    "y":
-    user_name = input("Please enter your user name: ").strip()
-    new_member = "no"
-    with open("members.json") as f:
-        store_data = json.load(f)
-        for member in store_data:
-            if user_name == member['name']:
-                password = input("Please enter your password: ").strip()
-                if password == member['password']:
-                    print("Welcome to our website!", member['name'])
-                    
-                else:
-                    print("Wrong password! You are not out member!") 
-                         
-
-else:
-    print("For our new member, you can get 5 percent discount on your first purchase!") 
-    confirmation = input("Are you interested? (y/n):").strip()
-    while confirmation != "y" and confirmation != "n":
+        
+    while member != "y" and member != "n":
         print("Enter y or n!")
-        confirmation = input("Are you still interested? (y/n): ").strip()
-    if confirmation == "y":
-        print("please fill up some information about yourself.")
-        new_user = input("Write Your preferred username:")
-        new_pass = input("Create your password: ")
-        new_member = 'yes'
+        member = input("Are you a member of Zein? (y/n): ").strip()
+    if member ==    "y":
+        user_name = input("Please enter your user name: ").strip()
+        new_member = "no"
         with open("members.json") as f:
             store_data = json.load(f)
-            new_dict = {"name" : new_user, "password" : new_pass}
-            store_data.append(new_dict)
-        with open("members.json", "w") as f:
-            json.dump(store_data, f)
-        print("Welcome to our website!", new_dict['name'])  
+            for member in store_data:
+                if user_name == member['name']:
+                    password = input("Please enter your password: ").strip()
+                    if password == member['password']:
+                        print("Welcome to our website!", member['name'])
+                            
+                    else:
+                        print("Wrong password! You are not out member!") 
+                                
 
     else:
-        print("It's okay! Let's get started!")  
-        new_member = "no"
-   
+        print("For our new member, you can get 5 percent discount on your first purchase!") 
+        confirmation = input("Are you interested? (y/n):").strip()
+        while confirmation != "y" and confirmation != "n":
+            print("Enter y or n!")
+            confirmation = input("Are you still interested? (y/n): ").strip()
+        if confirmation == "y":
+            print("please fill up some information about yourself.")
+            new_user = input("Write Your preferred username:")
+            new_pass = input("Create your password: ")
+            new_member = 'yes'
+            with open("members.json") as f:
+                store_data = json.load(f)
+                new_dict = {"name" : new_user, "password" : new_pass}
+                store_data.append(new_dict)
+            with open("members.json", "w") as f:
+                json.dump(store_data, f)
+            print("Welcome to our website!", new_dict['name'])  
 
+        else:
+            print("It's okay! Let's get started!")  
+            new_member = "no"
+    return new_member
+   
+newmem_dis = check_member()    
 # Catagories started
 cart = []
 def available_products(p):  
@@ -91,7 +92,7 @@ def category():
     return catagory 
 
 def main():
-    print("There are mainly 3 catagories of products.\n 1. Bags \n 2. Cloths \n 3. Shoes")
+    print("There are mainly 3 catagories of products.\n 1. Bags \n 2. Cloths \n 3. Shoes")    
     while True:
         try:
             c = category()
@@ -123,8 +124,8 @@ class InputError(Exception):
 def get_deleteItem():
     print(f"Your current cart collections are: {cart}")
     delete_item = input("Please write the product name to remove.").strip().upper()
-    for w in range(len(cart)):
-        if cart[w] != delete_item:
+    for w,e in enumerate(cart):
+        if e != delete_item:
             raise InputError
         else:
             cart.remove(delete_item) 
@@ -156,9 +157,9 @@ def payment(m,z):
     with open(m) as f:
         pay_data = json.load(f)
         z = 0
-        for o in range (len(cart)):
+        for o,e in enumerate(cart):
             for l in pay_data:
-                if cart[o].lower() == l['Name'].lower():
+                if e.lower() == l['Name'].lower():
                     z += l['Price']   
         return z  
 def user_guessGame():
@@ -205,7 +206,7 @@ def edit_cart():
         shoes_sum = payment("shoes.json",Total) 
         total = bag_sum +cloth_sum + shoes_sum
         print("Original price: $", total)
-        if new_member == "yes":
+        if newmem_dis == "yes":
             total = total - (total * 0.05)
             print("After Membership discount total amount is $", total)
         game_winner = game()
@@ -213,13 +214,15 @@ def edit_cart():
             total = total - (total * 0.1)  
         print(f"Your Final collections are: {cart}") 
         print("Your total amount is: $", total)
+        print("Thanks for visiting our App!")
 
     elif proceed == "n":
         print("Edit your cart")
         modify_cart()   
     else:
         print("Please write y or n!")    
-        return edit_cart()    
+        return edit_cart()  
+        
 edit_cart()
 
 
