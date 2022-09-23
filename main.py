@@ -6,6 +6,7 @@ Total = 0
 print(figlet_format("ZEIN" , font= "standard"))
 
 member = input("Are you a member of Zein? (y/n): ")
+  
 while member != "y" and member != "n":
     print("Enter y or n!")
     member = input("Are you a member of Zein? (y/n): ")
@@ -14,7 +15,6 @@ if member ==    "y":
     with open("members.json") as f:
         store_data = json.load(f)
         for member in store_data:
-            
             if user_name == member['name']:
                 password = input("Please enter your password: ")
                 if password == member['password']:
@@ -72,21 +72,39 @@ def available_products(p):
                 break
             break    
         cart.append(choice.upper())  
-
-
+class RangeError(Exception):
+    pass
+def category():
+    catagory = int(input("Please enter the number of your desired Catagory. (1/2/3)"))
+    if not catagory in range (1,4):
+        raise RangeError
+    return catagory 
 
 def main():
     print("There are mainly 3 catagories of products.\n 1. Bags \n 2. Cloths \n 3. Shoes")
-    catagory = input("Please enter the number of your desired Catagory. (1/2/3)")
-    match catagory:
-        case "1":
-            available_products("bags.json") 
-        case "2":
-            available_products("cloths.json") 
-        case "3":
-            available_products("shoes.json")              
-        case _:
-            print("default") 
+    while True:
+        try:
+            c = category()
+            
+            match c:
+                case 1:
+                    available_products("bags.json") 
+                    break
+                case 2:
+                    available_products("cloths.json")
+                    break 
+                case 3:
+                    available_products("shoes.json")
+                    break              
+                case _:
+                    print("default") 
+                 
+        except RangeError:
+            print("Input must be in the range 1 to 3") 
+        except ValueError:
+            print("Input must be an integer")
+        
+                   
              
 main()  
 print(f"Your collections are: {cart}")  
