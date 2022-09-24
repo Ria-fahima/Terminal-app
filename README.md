@@ -30,3 +30,13 @@ Coupon Game: In the Coupon game, the user needs to choose a number between 1 to 
 
 Final payment: After all these functions, the Final collections will be printed also the total price.
 
+## Implementation plan ##
+![1](https://user-images.githubusercontent.com/105357829/192095397-d51bd8a7-bf51-42a8-ba30-2023eca4764b.jpeg)
+![2](https://user-images.githubusercontent.com/105357829/192095408-f0697dd5-c81d-4a05-9a70-a30b4c13cab4.jpeg)
+![3](https://user-images.githubusercontent.com/105357829/192095431-9a08cc52-4add-4bfe-9e8d-bb0e2b5bdf04.jpeg)
+![4](https://user-images.githubusercontent.com/105357829/192095433-69c9921a-5755-4ea4-bf76-98b92c7dbccc.jpeg)
+![5](https://user-images.githubusercontent.com/105357829/192095447-b806fd0f-308d-4c25-bd0d-2353176163f0.jpeg)
+![6](https://user-images.githubusercontent.com/105357829/192095452-3585a7cf-af7a-4e38-8803-d1756532c028.jpeg)
+![7](https://user-images.githubusercontent.com/105357829/192095454-e04403e5-67a3-41c6-90c1-e53f6243d54e.jpeg)
+![8](https://user-images.githubusercontent.com/105357829/192095464-e5e7e0ad-0384-4ce0-b401-adb1b03b8c3e.jpeg)
+![9](https://user-images.githubusercontent.com/105357829/192095474-b247bf27-16ae-491c-bc9e-67733da20103.jpeg)
