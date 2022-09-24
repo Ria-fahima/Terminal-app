@@ -47,7 +47,15 @@ Final payment: After all these functions, the Final collections will be printed 
 ## Documentation for installation the application ##
 Download the file which is given below-
 <br/>
-[File link](https://drive.google.com/file/d/18f9A1xUxFNiD7LzeGd9ttJ-pYrab265P/view?usp=sharing)
+[App link](https://drive.google.com/file/d/18f9A1xUxFNiD7LzeGd9ttJ-pYrab265P/view?usp=sharing)
+<br/>
+Download the "Terminal-app"
+<br/>
+Unzip the file and put the file in your users segment
+<br/>
+As this app is connected with Python. So to run this you need python in your device. If you don't have Python installed in your device then you can go to this link and download it.
+[Download Python](https://www.python.org/downloads/)
+
 
 
 
