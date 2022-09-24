@@ -43,3 +43,10 @@ Final payment: After all these functions, the Final collections will be printed 
 ![7](https://user-images.githubusercontent.com/105357829/192095454-e04403e5-67a3-41c6-90c1-e53f6243d54e.jpeg)
 ![8](https://user-images.githubusercontent.com/105357829/192095464-e5e7e0ad-0384-4ce0-b401-adb1b03b8c3e.jpeg)
 ![9](https://user-images.githubusercontent.com/105357829/192095474-b247bf27-16ae-491c-bc9e-67733da20103.jpeg)
+<br/>
+## Documentation for installation the application ##
+Download the file which is given below-
+<br/>
+
+
+
