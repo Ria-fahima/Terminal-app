@@ -54,7 +54,17 @@ Download the "Terminal-app"
 Unzip the file and put the file in your users segment
 <br/>
 As this app is connected with Python. So to run this you need python in your device. If you don't have Python installed in your device then you can go to this link and download it.
+<br/>
 [Download Python](https://www.python.org/downloads/)
+<br/>
+Next open your terminal or command prompt.
+<br/>
+Write "cd terminal-app" . Now you will be in the terminal-app folder.
+<br/>
+Write "./riajul_wrapper.sh"
+<br/>
+You will be in the app now.
+
 
 
 
