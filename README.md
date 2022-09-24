@@ -15,4 +15,4 @@ Category list: After completing the membership task, next it will take the user 
 <br/>
 Move to other Category /Checkout process: Next, it asks for the response from the user whether he/she wants to check other categories or not. If “y” means yes, then it will directly take the user to the category list again and let him/her to choose for the next category. If “n” means no then the app will go the checkout process or edit the cart. Instead of 'y' or 'n' if a user gives any other input, then the app will ask for a valid input to proceed.
 <br/>
-3. 
+3. **Checkout process**: In this process, if a user wants to proceed for checkout then it will take him/her in that way otherwise if a user wants to edit(add/delete) his/her cart it will go for those options.
