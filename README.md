@@ -1,6 +1,9 @@
 # Terminal-app-documentation #
+## Github Link ##
 [Github Repo](https://github.com/fahimagithub/Terminal-app)
 <br/>
+## Presentation Link ##
+
 ## Features of the application ##
 There are mainly four features in the app. Those are listed below-
 1. **Verify Membership** : This Feature will verify the membership and influence a user to become a new member if the user is not listed in the existing membership list.
